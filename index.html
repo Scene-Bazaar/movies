@@ -22,13 +22,14 @@
 
     .movie-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
     .movie-card {
+      position: relative;
       background-color: #1e1e1e;
       border-radius: 10px;
       overflow: hidden;
@@ -41,10 +42,10 @@
     }
 
     .movie-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
-    .movie-card img {
+    .movie-card img.poster {
       width: 100%;
       height: auto;
       display: block;
@@ -57,9 +58,34 @@
       color: #ffcc00;
     }
 
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .movie-card:hover .play-icon {
+      opacity: 1;
+    }
+
     @media (max-width: 500px) {
+      .movie-grid {
+        grid-template-columns: 1fr;
+      }
+
       .movie-title {
         font-size: 0.9rem;
+      }
+
+      .play-icon {
+        width: 48px;
+        height: 48px;
       }
     }
   </style>
@@ -82,10 +108,11 @@
           const card = document.createElement('a');
           card.className = 'movie-card';
           card.href = movie.url;
-          card.target = '_blank'; // open in new tab
+          card.target = '_blank';
 
           card.innerHTML = `
-            <img src="${movie.poster}" alt="${movie.title}">
+            <img class="poster" src="${movie.poster}" alt="${movie.title}">
+            <img class="play-icon" src="https://i.ibb.co/cSb5fcf8/483054.png" alt="Play">
             <div class="movie-title">${movie.title}</div>
           `;
 
