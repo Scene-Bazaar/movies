@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Havoc</title>
+<style>
+  body {
+    background: black;
+  }
+  .iframe-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    height: 480px;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  .overlay-link.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="iframe-wrapper">
+  <iframe 
+    src="https://www.bitchute.com/embed/p5Q1h3OtGDa0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen
+  ></iframe>
+
+  <div id="overlayLink" class="overlay-link"></div>
+</div>
+
+<script>
+  const overlay = document.getElementById('overlayLink');
+  let timer;
+
+  function showOverlay() {
+    overlay.classList.add('active');
+  }
+
+  function hideOverlay() {
+    overlay.classList.remove('active');
+  }
+
+  timer = setTimeout(showOverlay, 20000);
+
+  overlay.addEventListener('click', () => {
+    window.open('https://mechanicladenthereby.com/cm4zhqwxj?key=d0e1eaf577b9c66dc40a9b138d78f9a5', '_blank');
+    hideOverlay();
+    clearTimeout(timer);
+    timer = setTimeout(showOverlay, 20000);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && !overlay.classList.contains('active')) {
+      clearTimeout(timer);
+      timer = setTimeout(showOverlay, 20000);
+    }
+  });
+</script>
+<script type='text/javascript' src='//mechanicladenthereby.com/d2/32/19/d23219d5f33d8259d0c09597735266af.js'></script>
+</body>
+</html> 
